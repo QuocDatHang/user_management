@@ -9,20 +9,20 @@ public class User {
     private String userName;
     private String email;
     private Date dob;
-    private Roles roles;
+    private Role role;
     private EGender gender;
 
     public User() {
     }
 
-    public User(int id, String lastName, String firstName, String userName, String email, Date dob, Roles roles, EGender gender) {
+    public User(int id, String lastName, String firstName, String userName, String email, Date dob, Role role, EGender gender) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.userName = userName;
         this.email = email;
         this.dob = dob;
-        this.roles = roles;
+        this.role = role;
         this.gender = gender;
     }
 
@@ -74,12 +74,12 @@ public class User {
         this.dob = dob;
     }
 
-    public Roles getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public EGender getGender() {

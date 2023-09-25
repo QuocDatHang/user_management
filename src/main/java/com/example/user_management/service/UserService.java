@@ -1,25 +1,26 @@
 package com.example.user_management.service;
 
+import com.example.user_management.dao.UserDAO;
 import com.example.user_management.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    private final static List<User> userList;
-    static{
-        userList = new ArrayList<>();
+    private final UserDAO userDAO;
+    public UserService(){
+        userDAO = new UserDAO();
     }
     public List<User> getAllUsers(){
-        return userList;
+        return userDAO.findAll();
     }
     public void create(User user){
-
+        userDAO.create(user);
     }
     public void update(User user){
 
     }
     public User findById(int id){
-        return userList.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
+        return userDAO.findById(id);
     }
 }

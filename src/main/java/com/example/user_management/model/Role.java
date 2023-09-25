@@ -1,6 +1,6 @@
 package com.example.user_management.model;
 
-public class Roles {
+public class Role {
     private int id;
     private String name;
 
@@ -8,7 +8,7 @@ public class Roles {
         return id;
     }
 
-    public Roles(int id, String name) {
+    public Role(int id, String name) {
         this.id = id;
         this.name = name;
     }

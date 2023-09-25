@@ -24,8 +24,8 @@
             <h6 class="d-none" id="message">${message}</h6>
         </c:if>
         <div>
-            <a href="/student?action=create" class="btn btn-primary mb-2">Create</a>
-            <a href="/student?action=showRestore" class="btn btn-primary mb-2">Restore</a>
+            <a href="/user?action=create" class="btn btn-primary mb-2">Create</a>
+            <a href="/user?action=showRestore" class="btn btn-primary mb-2">Restore</a>
         </div>
 
         <table class="table table-striped">
@@ -34,10 +34,22 @@
                     Id
                 </td>
                 <td>
-                    Name
+                    Last Name
                 </td>
                 <td>
-                    Date of Birth
+                    First Name
+                </td>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Date Of Birth
+                </td>
+                <td>
+                    Role
                 </td>
                 <td>
                     Gender
@@ -46,22 +58,34 @@
                     Action
                 </td>
             </tr>
-            <c:forEach var="student" items="${students}">
+            <c:forEach var="user" items="${users}">
                 <tr>
                     <td>
-                            ${student.id}
+                            ${user.id}
                     </td>
                     <td>
-                            ${student.name}
+                            ${user.lastName}
                     </td>
                     <td>
-                            ${student.dob}
+                            ${user.firstName}
                     </td>
                     <td>
-                            ${student.gender}
+                            ${user.userName}
                     </td>
                     <td>
-                        <a class="btn btn-danger" onclick="return confirm('Do you want remove ${student.name} ?')" href="/student?action=delete&id=${student.id}">
+                            ${user.email}
+                    </td>
+                    <td>
+                            ${user.dob}
+                    </td>
+                    <td>
+                            ${user.role.name}
+                    </td>
+                    <td>
+                            ${user.gender}
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" onclick="return confirm('Do you want remove ${user.firstName} ?')" href="/user?action=delete&id=${user.id}">
                             Delete
                         </a>
                     </td>
