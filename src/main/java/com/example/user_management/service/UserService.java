@@ -17,8 +17,8 @@ public class UserService {
     public void create(User user){
         userDAO.create(user);
     }
-    public void update(User user){
-
+    public void update(User user, int id){
+        userDAO.update(user, id);
     }
     public void delete(int id){
         userDAO.delete(id);

@@ -83,7 +83,7 @@ public class UserDAO extends DatabaseConnection {
             System.out.println(e.getMessage());
         }
     }
-    public void update(User user){
+    public void update(User user, int id){
         String EDIT_USER = "UPDATE users SET lastName = ?, firstName = ?, userName = ?," +
                 " email = ?, dob = ?, role_id = ?, gender = ? WHERE (id = ?)";
         Connection connection = getConnection();
@@ -96,7 +96,7 @@ public class UserDAO extends DatabaseConnection {
             preparedStatement.setDate(5, (Date) user.getDob());
             preparedStatement.setInt(6, user.getRole().getId());
             preparedStatement.setString(7, user.getGender().toString());
-            preparedStatement.setInt(8, user.getId());
+            preparedStatement.setInt(8, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

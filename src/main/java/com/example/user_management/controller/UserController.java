@@ -61,6 +61,7 @@ public class UserController extends HttpServlet {
 
     private void showUsers(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("users", userService.getAllUsers(false));
+        req.setAttribute("message", req.getParameter("message"));
         req.getRequestDispatcher("user.jsp").forward(req, resp);
     }
 
@@ -88,7 +89,7 @@ public class UserController extends HttpServlet {
         user.setRole(roleService.findById(Integer.parseInt(req.getParameter("role"))));
         user.setGender(EGender.valueOf(req.getParameter("gender")));
 
-        userService.update(user);
+        userService.update(user, Integer.parseInt(req.getParameter("id")));
         resp.sendRedirect("/user?message=Edit Successful!");
     }
 

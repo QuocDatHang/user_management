@@ -17,7 +17,7 @@
 <div class="container">
     <div class="card container px-6" style="height: 100vh">
         <h3 class="text-center">Edit User</h3>
-        <form action="/user?action=edit" method="post">
+        <form action="/user?action=edit&id=${editUser.id}" method="post">
             <div class="mb-3">
                 <label for="lastName" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="lastName" name="lastName" value="${editUser.lastName}">
