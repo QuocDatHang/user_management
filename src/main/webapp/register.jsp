@@ -9,15 +9,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Create User</title>
+    <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
     <div class="card container px-6" style="height: 100vh">
-        <h3 class="text-center">Create User</h3>
-        <form action="/user?action=create" method="post">
+        <h3 class="text-center">Register</h3>
+        <form action="/auth?action=register" method="post">
             <div class="mb-3">
                 <label for="userName" class="form-label">User Name</label>
                 <input type="text" class="form-control" id="userName" name="userName" >
@@ -58,7 +58,8 @@
                     </c:forEach>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="login.jsp" class="btn btn-primary">Cancel</a>
         </form>
     </div>
 

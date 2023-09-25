@@ -26,6 +26,7 @@ public class UserDAO extends DatabaseConnection {
                 user.setLastName(rs.getString("lastName"));
                 user.setFirstName(rs.getString("firstName"));
                 user.setUserName(rs.getString("userName"));
+                user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
                 user.setDob(rs.getDate("dob"));
                 user.setRole(new Role(rs.getInt("role_id"), rs.getString("roleName")));
@@ -51,6 +52,7 @@ public class UserDAO extends DatabaseConnection {
                 user.setLastName(rs.getString("lastName"));
                 user.setFirstName(rs.getString("firstName"));
                 user.setUserName(rs.getString("userName"));
+                user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
                 user.setDob(rs.getDate("dob"));
                 user.setRole(new Role(rs.getInt("role_id"), rs.getString("roleName")));
@@ -64,19 +66,20 @@ public class UserDAO extends DatabaseConnection {
     }
 
     public void create(User user) {
-        String CREATE_USER = "INSERT INTO users (`lastName`, `firstName`, `userName`, `email`, `dob`, `role_id`, `gender`) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String CREATE_USER = "INSERT INTO users (`userName`, `password`, `lastName`, `firstName`, `email`, `dob`, `role_id`, `gender`) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER);
 
-            preparedStatement.setString(1, user.getLastName());
-            preparedStatement.setString(2, user.getFirstName());
-            preparedStatement.setString(3, user.getUserName());
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setDate(5, (Date) user.getDob());
-            preparedStatement.setInt(6, user.getRole().getId());
-            preparedStatement.setString(7, user.getGender().toString());
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getLastName());
+            preparedStatement.setString(4, user.getFirstName());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setDate(6, (Date) user.getDob());
+            preparedStatement.setInt(7, user.getRole().getId());
+            preparedStatement.setString(8, user.getGender().toString());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -84,19 +87,20 @@ public class UserDAO extends DatabaseConnection {
         }
     }
     public void update(User user, int id){
-        String EDIT_USER = "UPDATE users SET lastName = ?, firstName = ?, userName = ?," +
+        String EDIT_USER = "UPDATE users SET  userName = ?,  password = ?, lastName = ?, firstName = ?," +
                 " email = ?, dob = ?, role_id = ?, gender = ? WHERE (id = ?)";
         Connection connection = getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(EDIT_USER);
-            preparedStatement.setString(1, user.getLastName());
-            preparedStatement.setString(2, user.getFirstName());
-            preparedStatement.setString(3, user.getUserName());
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setDate(5, (Date) user.getDob());
-            preparedStatement.setInt(6, user.getRole().getId());
-            preparedStatement.setString(7, user.getGender().toString());
-            preparedStatement.setInt(8, id);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getLastName());
+            preparedStatement.setString(4, user.getFirstName());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setDate(6, (Date) user.getDob());
+            preparedStatement.setInt(7, user.getRole().getId());
+            preparedStatement.setString(8, user.getGender().toString());
+            preparedStatement.setInt(9, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -127,5 +131,30 @@ public class UserDAO extends DatabaseConnection {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public User findByUserName(String userName){
+        String FIND_BY_USER_NAME = "SELECT * FROM users u JOIN roles r on u.role_id = r.id HAVING u.userName = ?";
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_USER_NAME);
+            preparedStatement.setString(1, userName);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setLastName(rs.getString("lastName"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setUserName(rs.getString("userName"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setDob(rs.getDate("dob"));
+                user.setRole(new Role(rs.getInt("role_id"), rs.getString("name")));
+                user.setGender(EGender.valueOf(rs.getString("gender")));
+                return user;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

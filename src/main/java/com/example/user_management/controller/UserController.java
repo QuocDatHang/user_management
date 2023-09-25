@@ -80,16 +80,7 @@ public class UserController extends HttpServlet {
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        User user = new User();
-        user.setLastName(req.getParameter("lastName"));
-        user.setFirstName(req.getParameter("firstName"));
-        user.setUserName(req.getParameter("userName"));
-        user.setDob(Date.valueOf(req.getParameter("dob")));
-        user.setEmail(req.getParameter("email"));
-        user.setRole(roleService.findById(Integer.parseInt(req.getParameter("role"))));
-        user.setGender(EGender.valueOf(req.getParameter("gender")));
-
-        userService.update(user, Integer.parseInt(req.getParameter("id")));
+        userService.update(getUserByRequest((req)), Integer.parseInt(req.getParameter("id")));
         resp.sendRedirect("/user?message=Edit Successful!");
     }
 
@@ -102,17 +93,21 @@ public class UserController extends HttpServlet {
     }
 
     private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        userService.create(getUserByRequest(req));
+        resp.sendRedirect("/user?message=Create Successful!");
+    }
+
+    public User getUserByRequest(HttpServletRequest req){
         User user = new User();
+        user.setUserName(req.getParameter("userName"));
+        user.setPassword(req.getParameter("password"));
         user.setLastName(req.getParameter("lastName"));
         user.setFirstName(req.getParameter("firstName"));
-        user.setUserName(req.getParameter("userName"));
         user.setDob(Date.valueOf(req.getParameter("dob")));
         user.setEmail(req.getParameter("email"));
         user.setRole(roleService.findById(Integer.parseInt(req.getParameter("role"))));
         user.setGender(EGender.valueOf(req.getParameter("gender")));
-
-        userService.create(user);
-        resp.sendRedirect("/user?message=Create Successful!");
+        return user;
     }
 
     @Override

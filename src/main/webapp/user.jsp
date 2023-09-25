@@ -34,13 +34,13 @@
                     Id
                 </td>
                 <td>
+                    User Name
+                </td>
+                <td>
                     Last Name
                 </td>
                 <td>
                     First Name
-                </td>
-                <td>
-                    User Name
                 </td>
                 <td>
                     Email
@@ -64,13 +64,13 @@
                             ${user.id}
                     </td>
                     <td>
+                            ${user.userName}
+                    </td>
+                    <td>
                             ${user.lastName}
                     </td>
                     <td>
                             ${user.firstName}
-                    </td>
-                    <td>
-                            ${user.userName}
                     </td>
                     <td>
                             ${user.email}

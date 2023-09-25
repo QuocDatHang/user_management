@@ -19,16 +19,20 @@
         <h3 class="text-center">Edit User</h3>
         <form action="/user?action=edit&id=${editUser.id}" method="post">
             <div class="mb-3">
+                <label for="userName" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="userName" name="userName" value="${editUser.userName}">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" name="password">
+            </div>
+            <div class="mb-3">
                 <label for="lastName" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="lastName" name="lastName" value="${editUser.lastName}">
             </div>
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName" value="${editUser.firstName}">
-            </div>
-            <div class="mb-3">
-                <label for="userName" class="form-label">User Name</label>
-                <input type="text" class="form-control" id="userName" name="userName" value="${editUser.userName}">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
