@@ -11,14 +11,20 @@ public class UserService {
     public UserService(){
         userDAO = new UserDAO();
     }
-    public List<User> getAllUsers(){
-        return userDAO.findAll();
+    public List<User> getAllUsers(boolean isdeleted){
+        return userDAO.findAll(isdeleted);
     }
     public void create(User user){
         userDAO.create(user);
     }
     public void update(User user){
 
+    }
+    public void delete(int id){
+        userDAO.delete(id);
+    }
+    public void restore(int id){
+        userDAO.restore(id);
     }
     public User findById(int id){
         return userDAO.findById(id);

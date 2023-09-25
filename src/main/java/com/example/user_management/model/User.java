@@ -12,6 +12,7 @@ public class User {
     private Role role;
     private EGender gender;
 
+
     public User() {
     }
 

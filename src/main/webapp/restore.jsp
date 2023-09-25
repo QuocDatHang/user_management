@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>User Management</title>
+    <title>Restore</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -23,78 +23,75 @@
         <c:if test="${message != null}">
             <h6 class="d-none" id="message">${message}</h6>
         </c:if>
-        <div>
-            <a href="/user?action=create" class="btn btn-success mb-2">Create</a>
-            <a href="/user?action=showRestore" class="btn btn-primary mb-2">Restore</a>
-        </div>
-
-        <table class="table table-striped">
-            <tr>
-                <td>
-                    Id
-                </td>
-                <td>
-                    Last Name
-                </td>
-                <td>
-                    First Name
-                </td>
-                <td>
-                    User Name
-                </td>
-                <td>
-                    Email
-                </td>
-                <td>
-                    Date Of Birth
-                </td>
-                <td>
-                    Role
-                </td>
-                <td>
-                    Gender
-                </td>
-                <td>
-                    Action
-                </td>
-            </tr>
-            <c:forEach var="user" items="${users}">
+        <form action="/user?action=restore" method="post">
+            <div>
+                <a href="/user" class="btn btn-warning mb-2">Return</a>
+                <button type="submit" class="btn btn-primary mb-2">Restore All</button>
+            </div>
+            <table class="table table-striped">
                 <tr>
                     <td>
-                            ${user.id}
+                        Id
                     </td>
                     <td>
-                            ${user.lastName}
+                        Last Name
                     </td>
                     <td>
-                            ${user.firstName}
+                        First Name
                     </td>
                     <td>
-                            ${user.userName}
+                        User Name
                     </td>
                     <td>
-                            ${user.email}
+                        Email
                     </td>
                     <td>
-                            ${user.dob}
+                        Date Of Birth
                     </td>
                     <td>
-                            ${user.role.name}
+                        Role
                     </td>
                     <td>
-                            ${user.gender}
+                        Gender
                     </td>
                     <td>
-                        <a class="btn btn-info" href="/user?action=edit&id=${user.id}">
-                            Edit
-                        </a>
-                        <a class="btn btn-danger" onclick="return confirm('Do you want remove ${user.firstName} ?')" href="/user?action=delete&id=${user.id}">
-                            Delete
-                        </a>
+                        Select
                     </td>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="user" items="${users}">
+                    <tr>
+                        <td>
+                                ${user.id}
+                        </td>
+                        <td>
+                                ${user.lastName}
+                        </td>
+                        <td>
+                                ${user.firstName}
+                        </td>
+                        <td>
+                                ${user.userName}
+                        </td>
+                        <td>
+                                ${user.email}
+                        </td>
+                        <td>
+                                ${user.dob}
+                        </td>
+                        <td>
+                                ${user.role.name}
+                        </td>
+                        <td>
+                                ${user.gender}
+                        </td>
+                        <td>
+                            <input class="form-check-input" type="checkbox" value="${user.id}" name="checkbox">
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+
     </div>
 
 </div>
