@@ -27,6 +27,10 @@
                 <input type="password" class="form-control" id="password" name="password" >
             </div>
             <div class="mb-3">
+                <label for="re-password" class="form-label">Re-enter Password</label>
+                <input type="password" class="form-control" id="re-password" onblur="checkPassword()" name="re-password" >
+            </div>
+            <div class="mb-3">
                 <label for="lastName" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="lastName" name="lastName">
             </div>
@@ -62,8 +66,16 @@
             <a href="login.jsp" class="btn btn-primary">Cancel</a>
         </form>
     </div>
-
 </div>
+<script>
+    function checkPassword(){
+        var password = document.getElementById('password').value;
+        var repassword = document.getElementById('re-password').value;
+        if (password !== repassword){
+            alert('Passwords do not match')
+        }
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

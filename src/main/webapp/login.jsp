@@ -10,12 +10,11 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -26,12 +25,12 @@
     <form action="/auth" method="post">
         <div class="mb-3">
             <label for="userName" class="form-label">User Name:</label>
-            <input type="text" class="form-control" id="userName" name="userName" required>
+            <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter user name" required>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Login</button>

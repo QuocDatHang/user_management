@@ -27,7 +27,6 @@ public class AuthController extends HttpServlet {
             case "showRegister" -> showRegister(req, resp);
             default -> showLogin(req, resp);
         }
-
     }
 
     private void showRegister(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,7 +53,10 @@ public class AuthController extends HttpServlet {
         }
     }
 
-    private void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void login(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+//        req.setAttribute("us", req.getParameter("userName"));
+//        req.setAttribute("pass", req.getParameter("password"));
+//        req.getRequestDispatcher("login.jsp").forward(req, resp);
         boolean checkLogin = userService.login(req, resp);
         if (!checkLogin){
             resp.sendRedirect("/auth?message=Username or password not correct");

@@ -39,14 +39,14 @@ public class UserService {
     public boolean login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-        User user = userDAO.findByUserName(userName);
-        if (user != null & PasswordUtils.checkPassword(password, user.getPassword())){
+        var user = userDAO.findByUserName(userName);
+        if (user != null && PasswordUtils.checkPassword(password, user.getPassword())){
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
             if (user.getRole().getName().equals("Admin")){
                 resp.sendRedirect("/user?message=Login Successful");
             } else if (user.getRole().getName().equals("User")) {
-                resp.sendRedirect("/user?action=restore&message=Login Successful");
+                resp.sendRedirect("/user?action=showRestore&message=Login Successful");
             }
             else {
                 resp.sendRedirect("/index.jsp?message=Login Successful");

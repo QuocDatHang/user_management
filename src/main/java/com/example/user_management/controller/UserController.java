@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.List;
 
 @WebServlet(name = "userController", value = "/user")
 public class UserController extends HttpServlet {
@@ -49,6 +48,7 @@ public class UserController extends HttpServlet {
 
     private void showRestore(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("users", userService.getAllUsers(true));
+        req.setAttribute("message", req.getParameter("message"));
         req.getRequestDispatcher("restore.jsp").forward(req, resp);
     }
 
