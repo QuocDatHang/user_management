@@ -1,21 +1,23 @@
 package com.example.user_management.model;
 
+import com.example.user_management.model.enumeration.ECategory;
+
 import java.math.BigDecimal;
 
 public class Product {
     private int id;
     private String productName;
     private BigDecimal price;
-    private int quantity;
+    private ECategory category;
 
     public Product() {
     }
 
-    public Product(int id, String productName, BigDecimal price, int quantity) {
+    public Product(int id, String productName, BigDecimal price, ECategory category) {
         this.id = id;
         this.productName = productName;
         this.price = price;
-        this.quantity = quantity;
+        this.category = category;
     }
 
     public int getId() {
@@ -42,11 +44,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public ECategory getCategory() {
+        return category;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCategory(ECategory category) {
+        this.category = category;
     }
 }
