@@ -1,6 +1,6 @@
 package com.example.user_management.controller;
 
-import com.example.user_management.model.EGender;
+import com.example.user_management.model.enumeration.EGender;
 import com.example.user_management.model.User;
 import com.example.user_management.service.RoleService;
 import com.example.user_management.service.UserService;

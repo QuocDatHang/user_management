@@ -1,10 +1,9 @@
 package com.example.user_management.dao;
 
-import com.example.user_management.model.EGender;
+import com.example.user_management.model.enumeration.EGender;
 import com.example.user_management.model.Role;
 import com.example.user_management.model.User;
 
-import java.lang.ref.PhantomReference;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

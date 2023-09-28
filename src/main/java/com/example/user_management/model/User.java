@@ -1,5 +1,7 @@
 package com.example.user_management.model;
 
+import com.example.user_management.model.enumeration.EGender;
+
 import java.util.Date;
 
 public class User {
