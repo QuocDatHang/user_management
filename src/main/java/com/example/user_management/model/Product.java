@@ -13,6 +13,10 @@ public class Product {
     public Product() {
     }
 
+    public Product(int id) {
+        this.id = id;
+    }
+
     public Product(int id, String productName, BigDecimal price, ECategory category) {
         this.id = id;
         this.productName = productName;

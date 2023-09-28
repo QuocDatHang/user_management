@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <h3 class="text-center">Create Product Import</h3>
-    <form action="/productImport" method="post">
+    <form action="/productImport?action=create" method="post">
         <div class="mb-3">
             <label for="code" class="form-label">Code</label>
             <input type="text" class="form-control" id="code" name="code" required>
@@ -25,10 +25,10 @@
             <label for="importDate" class="form-label">Import Date</label>
             <input type="date" class="form-control" id="importDate" name="importDate" required>
         </div>
-                <div class="mb-3">
-                    <label for="totalAmount" class="form-label">Total Price</label>
-                    <input type="number" class="form-control" id="totalAmount" name="totalAmount" required>
-                </div>
+<%--                <div class="mb-3">--%>
+<%--                    <label for="totalPrice" class="form-label">Total Price</label>--%>
+<%--                    <input type="number" class="form-control" id="totalPrice" name="totalPrice" required>--%>
+<%--                </div>--%>
         <div class="row mb-3">
             <div class="col-4">
                 Product
@@ -56,7 +56,7 @@
                     <input type="number" class="form-control" name="quantities" required>
                 </div>
                 <div class="col-3">
-                    <input type="number" class="form-control" name="amounts" required>
+                    <input type="number" class="form-control" name="importPrice" required>
                 </div>
                 <div class="col-2 d-flex justify-content-end">
                     <button type="button" class="btn btn-danger" onclick="deleteRow(1)">Delete</button>
@@ -90,7 +90,7 @@
                 <input type="number" class="form-control"  name="quantities" required>
             </div>
             <div class="col-3">
-                <input type="number" class="form-control"  name="amounts" required>
+                <input type="number" class="form-control"  name="importPrice" required>
             </div>
             <div class="col-2 d-flex justify-content-end">
                 <button class="btn btn-danger" onclick="deleteRow(\${rowProductImport})">Delete</button>

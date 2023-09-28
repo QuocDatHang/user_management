@@ -50,8 +50,9 @@ public class ProductImportController extends HttpServlet {
         }
     }
 
-    private void create(HttpServletRequest req, HttpServletResponse resp) {
+    private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         productImportService.create(req);
+        resp.sendRedirect("/productImport");
     }
 
     @Override

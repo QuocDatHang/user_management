@@ -1,20 +1,20 @@
 package com.example.user_management.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class ProductImport {
     private int id;
     private String code;
-    private Date importDate;
+    private java.sql.Date importDate;
     private BigDecimal totalPrice;
     private List<ProductImportDetail> productImportDetails;
 
     public ProductImport() {
     }
 
-    public ProductImport(int id, String code, Date importDate, BigDecimal totalPrice) {
+    public ProductImport(int id, String code, java.sql.Date importDate, BigDecimal totalPrice) {
         this.id = id;
         this.code = code;
         this.importDate = importDate;
@@ -38,7 +38,7 @@ public class ProductImport {
         this.code = code;
     }
 
-    public Date getImportDate() {
+    public java.sql.Date getImportDate() {
         return importDate;
     }
 
