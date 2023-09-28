@@ -7,15 +7,16 @@ public class Product {
     private String productName;
     private BigDecimal price;
     private int quantity;
-
+    private ECategory category;
     public Product() {
     }
 
-    public Product(int id, String productName, BigDecimal price, int quantity) {
+    public Product(int id, String productName, BigDecimal price, int quantity, ECategory category) {
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
+        this.category = category;
     }
 
     public int getId() {
@@ -48,5 +49,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public ECategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ECategory category) {
+        this.category = category;
     }
 }
