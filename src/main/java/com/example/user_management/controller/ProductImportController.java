@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name ="ProductImportController", urlPatterns = "/productImport")
+@WebServlet(name ="productImportController", urlPatterns = "/productImport")
 public class ProductImportController extends HttpServlet {
     private ProductImportService productImportService;
     private ProductService productService;
@@ -41,7 +41,17 @@ public class ProductImportController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String action = req.getParameter("action");
+        if (action == null){
+            action = "";
+        }
+        switch (action){
+            case "create" -> create(req, resp);
+        }
+    }
+
+    private void create(HttpServletRequest req, HttpServletResponse resp) {
+        productImportService.create(req);
     }
 
     @Override

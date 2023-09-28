@@ -5,17 +5,17 @@ import java.math.BigDecimal;
 public class ProductImportDetail {
     private int id;
     private int quantity;
-    private BigDecimal totalProductPrice;
+    private BigDecimal importPrice;
     private Product product;
     private ProductImport productImport;
 
     public ProductImportDetail() {
     }
 
-    public ProductImportDetail(int id, int quantity, BigDecimal totalProductPrice, Product product, ProductImport productImport) {
+    public ProductImportDetail(int id, int quantity, BigDecimal importPrice, Product product, ProductImport productImport) {
         this.id = id;
         this.quantity = quantity;
-        this.totalProductPrice = totalProductPrice;
+        this.importPrice = importPrice;
         this.product = product;
         this.productImport = productImport;
     }
@@ -36,12 +36,12 @@ public class ProductImportDetail {
         this.quantity = quantity;
     }
 
-    public BigDecimal getTotalProductPrice() {
-        return totalProductPrice;
+    public BigDecimal getimportPrice() {
+        return importPrice;
     }
 
-    public void setTotalProductPrice(BigDecimal totalProductPrice) {
-        this.totalProductPrice = totalProductPrice;
+    public void setimportPrice(BigDecimal importPrice) {
+        this.importPrice = importPrice;
     }
 
     public Product getProduct() {

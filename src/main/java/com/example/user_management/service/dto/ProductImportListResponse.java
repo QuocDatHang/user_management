@@ -13,6 +13,9 @@ public class ProductImportListResponse {
     private String products;
     private BigDecimal totalPrice;
 
+    public ProductImportListResponse() {
+    }
+
     public ProductImportListResponse(int id, String code, Date importDate, String products, BigDecimal totalPrice) {
         this.id = id;
         this.code = code;

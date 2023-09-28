@@ -18,17 +18,17 @@
     <h3 class="text-center">Create Product Import</h3>
     <form action="/productImport" method="post">
         <div class="mb-3">
-            <label for="code" class="form-label">Mã import</label>
+            <label for="code" class="form-label">Code</label>
             <input type="text" class="form-control" id="code" name="code" required>
         </div>
         <div class="mb-3">
-            <label for="importDate" class="form-label">Ngày import</label>
+            <label for="importDate" class="form-label">Import Date</label>
             <input type="date" class="form-control" id="importDate" name="importDate" required>
         </div>
-        <%--        <div class="mb-3">--%>
-        <%--            <label for="totalAmount" class="form-label">Tổng giá trị</label>--%>
-        <%--            <input type="number" class="form-control" id="totalAmount" name="totalAmount" required>--%>
-        <%--        </div>--%>
+                <div class="mb-3">
+                    <label for="totalAmount" class="form-label">Total Price</label>
+                    <input type="number" class="form-control" id="totalAmount" name="totalAmount" required>
+                </div>
         <div class="row mb-3">
             <div class="col-4">
                 Product
@@ -37,7 +37,7 @@
                 Quantity
             </div>
             <div class="col-3">
-                Amount
+                Input Price
             </div>
             <div class="col-2 d-flex justify-content-end">
                 <button type="button" class="btn btn-info" onclick="addMore()">Add More</button>
@@ -48,7 +48,7 @@
                 <div class="col-4">
                     <select class="form-control" name="productIds" id="product">
                         <c:forEach var="product" items="${products}">
-                            <option value="${product.id}">${product.name}</option>
+                            <option value="${product.id}">${product.productName}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Tạo import</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -78,7 +78,7 @@
     function addMore() {
         let selectStr = '<select class="form-control" name="productIds" id="product">';
         for (const product of products) {
-            selectStr += `<option value=\${product.id}>\${product.name}</option>`;
+            selectStr += `<option value=\${product.id}>\${product.productName}</option>`;
         }
 
         selectStr += '</select>';

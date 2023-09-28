@@ -1,5 +1,6 @@
 package com.example.user_management.dao;
 
+import com.example.user_management.model.ProductImport;
 import com.example.user_management.service.dto.ProductImportListResponse;
 
 import java.sql.Connection;
@@ -28,5 +29,9 @@ public class ProductImportDAO extends DatabaseConnection {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    public int create(ProductImport productImport){
+
     }
 }

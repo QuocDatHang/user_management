@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductDAO extends DatabaseConnection {
     public List<Product> findAll() {
         var content = new ArrayList<Product>();
-        var SELECT_ALL = "SELECT * FROM user_management.products;";
+        var SELECT_ALL = "SELECT * FROM user_management.products";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL)) {
@@ -30,7 +30,7 @@ public class ProductDAO extends DatabaseConnection {
     private Product getProductByResultSet(ResultSet rs) throws SQLException {
         var product = new Product();
         product.setId(rs.getInt("id"));
-        product.setProductName(rs.getString("name"));
+        product.setProductName(rs.getString("productName"));
         product.setPrice(rs.getBigDecimal("price"));
         product.setCategory(ECategory.valueOf(rs.getString("category")));
         return product;
